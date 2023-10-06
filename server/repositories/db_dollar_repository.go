@@ -30,7 +30,6 @@ func CreateDollar(ctx context.Context, dollarReal *models.DollarReal) error {
 	`)
 
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -44,7 +43,6 @@ func CreateDollar(ctx context.Context, dollarReal *models.DollarReal) error {
 	)
 
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 

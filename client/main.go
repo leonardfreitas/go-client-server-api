@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -22,12 +23,14 @@ func main() {
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 
 	if err != nil {
+		log.Println(err)
 		panic(err)
 	}
 
 	resp, err := http.DefaultClient.Do(req)
 
 	if err != nil {
+		log.Println(err)
 		panic(err)
 	}
 
@@ -36,6 +39,7 @@ func main() {
 	body, err := io.ReadAll(resp.Body)
 
 	if err != nil {
+		log.Println(err)
 		panic(err)
 	}
 
@@ -45,6 +49,7 @@ func main() {
 	f, err := os.Create("cotacao.txt")
 
 	if err != nil {
+		log.Println(err)
 		panic(err)
 	}
 
@@ -55,6 +60,7 @@ func main() {
 	_, err = f.Write([]byte(fmt.Sprintf("Dólar: %s", bid)))
 
 	if err != nil {
+		log.Println(err)
 		panic(err)
 	}
 
